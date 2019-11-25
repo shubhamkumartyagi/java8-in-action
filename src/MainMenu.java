@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,6 +11,9 @@ public class MainMenu {
 		List<String> threeHighCaloricDishNames = getMenu().stream().filter((Dish dish) -> dish.getCalories() > 300)
 				.map(Dish::getName).limit(3).collect(Collectors.toList());
 		System.out.println(threeHighCaloricDishNames);
+		List<String> sortedBasedOnCalories = getMenu().stream().sorted(Comparator.comparing(Dish::getCalories))
+				.map(Dish::getName).collect(Collectors.toList());
+		System.out.println(sortedBasedOnCalories);
 	}
 
 	public static List<Dish> getMenu() {
